@@ -1,0 +1,18 @@
+{
+    "folders": [
+		{
+			"path": "."
+		}
+    ],
+	"settings": {
+        "files.autoSave": "afterDelay",
+        "editor.acceptSuggestionOnEnter": "off",
+        "editor.fontSize": 22,
+        "files.associations": {
+            "*.asm": "kickassembler"
+		},
+		"kickassembler.emulator.runtime": "C:\\Users\\John\\Desktop\\CommanderX16\\R46\\x16emu.exe",
+        "kickassembler.assembler.option.outputDirectory": "Bin",
+        "kickassembler.emulator.options": "-prg ${kickassembler:buildFilename} -run -scale 2 -debug"
+    }
+}
