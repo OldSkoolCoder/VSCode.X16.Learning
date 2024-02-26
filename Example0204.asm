@@ -10,20 +10,33 @@
 * = $080d
 
 main: {
+    backupVeraAddrInfo()
 
 //	addressRegister(0,VRAMPalette,1)
 // Poke 1024,y
 	addressRegister(0,$1b000,1,0)
 
-
-	ldy #79
+// Setting up line of H's
+	ldy #80
 !loop:
 	lda #8
 	sta VERADATA0
 	dey
-	
 	bne !loop-
 
+// Copy That line elsewhere
+	addressRegister(0,$1b000,1,0)
+	addressRegister(1,$1b600,1,0)
+
+// Setting up line of H's
+	ldy #80
+!loop:
+	lda VERADATA0
+	sta VERADATA1
+	dey
+	bne !loop-
+
+    restoreVeraAddrInfo()    
 	rts
 }
 
