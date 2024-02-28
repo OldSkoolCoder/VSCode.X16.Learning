@@ -7,6 +7,7 @@
 .const VERADATA0         = $9F23
 .const VERADATA1         = $9F24
 .const VERACTRL	         = $9F25
+.const VERASCANLINE       = $9F28
 .const VERA_DC_video     = $9F29
 .const VERA_DC_hscale    = $9F2A
 .const VERA_DC_vscale    = $9F2B
