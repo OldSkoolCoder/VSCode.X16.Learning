@@ -13,6 +13,6 @@
 		},
 		"kickassembler.emulator.runtime": "C:\\Users\\John\\Desktop\\CommanderX16\\R46\\x16emu.exe",
         "kickassembler.assembler.option.outputDirectory": "Bin",
-        "kickassembler.emulator.options": "-prg ${kickassembler:buildFilename} -run -scale 2 -debug"
+        "kickassembler.emulator.options": "-prg ${kickassembler:buildFilename} -run -scale 2 -debug -keymap en-gb -joy1"
     }
 }

@@ -22,3 +22,5 @@
 .const PETSCII_CLEAR = $93
 
 .const PETSCII_DELETE = $14
+.const PETSCII_RETURN = $0D
+.const PETSCII_SPACE = $20

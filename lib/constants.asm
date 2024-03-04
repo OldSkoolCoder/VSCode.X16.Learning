@@ -7,7 +7,7 @@
 .const VERADATA0         = $9F23
 .const VERADATA1         = $9F24
 .const VERACTRL	         = $9F25
-.const VERASCANLINE       = $9F28
+.const VERASCANLINE      = $9F28
 .const VERA_DC_video     = $9F29
 .const VERA_DC_hscale    = $9F2A
 .const VERA_DC_vscale    = $9F2B
@@ -50,3 +50,18 @@
 .const DCSCALEx32 = $04
 .const DCSCALEx64 = $02
 .const DCSCALEx128 = $01
+
+// Controllers
+.const CONTROLLER_KBD = $00
+.const CONTROLLER_SNES1 = $01
+.const CONTROLLER_SNES2 = $02
+.const CONTROLLER_SNES3 = $03
+.const CONTROLLER_SNES4 = $04
+
+// KERNEL Routines
+// 
+.const CHRIN  = $FFE4
+.const CHROUT  = $FFD2
+.const SCREEN  = $FFED
+.const JOYSTICK_SCAN = $FF53
+.const JOYSTICK_GET = $FF56
