@@ -76,8 +76,8 @@ veraAddr: .byte 0,0,0,0
     addressRegister(1,destination,1,0)
     } else {
     // source below dest - do backwards starting at end
-    addressRegister(0,source + bytecount-1,1,1)
-    addressRegister(1,destination+bytecount-1,1,1)
+    addressRegister(0,source + bytecount-2,1,1)
+    addressRegister(1,destination+bytecount-2,1,1)
     }
     ldy #bytecount
 copyloop:
@@ -85,4 +85,32 @@ copyloop:
  	sta VERADATA1
  	dey
  	bne copyloop
+}
+
+.macro copyDataToVera(source,destination,bytecount) 
+// source is x16 memory . dest is vera location, bytecount max 65535
+// destroys a
+{
+    addressRegister(0,destination,1,0)
+    lda counter: $deaf
+    lda #bytecount & $ff
+    sta counter
+    lda #(bytecount >> 8) & $ff
+    sta counter+1
+    lda #source & $ff
+    sta copyFrom
+    lda #(source >>8) & $ff
+    sta copyFrom + 1
+
+    loop:
+    lda copyFrom: $deaf
+    sta VERADATA0
+    inc copyFrom
+    bne skip1
+    inc copyFrom+1
+skip1:
+    dec counter
+    bne loop
+    dec counter+1
+    bpl loop
 }
