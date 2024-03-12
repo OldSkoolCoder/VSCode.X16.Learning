@@ -38,26 +38,48 @@ veraAddr: .byte 0,0,0,0
 
 .macro backupVeraAddrInfo()
 {
-    lda VERACTRL
-    sta veraAddr
     lda VERAAddrLow
-    sta veraAddr + 1
+    //sta veraAddr + 1
+    pha
     lda VERAAddrHigh
-    sta veraAddr + 2
+    //sta veraAddr + 2
+    pha
     lda VERAAddrBank
-    sta veraAddr + 3
+    //sta veraAddr + 3
+    pha
+    lda VERACTRL
+    //sta veraAddr
+    pha
 }
 
 .macro restoreVeraAddrInfo()
 {
-    lda veraAddr
+    pla
+    //lda veraAddr
     sta VERACTRL
-    lda veraAddr + 1
-    sta VERAAddrLow
-    lda veraAddr + 2
+    pla
+    //lda veraAddr + 3
+    sta VERAAddrBank
+    pla
+    //lda veraAddr + 2
     sta VERAAddrHigh
-    sta veraAddr + 3
-    lda VERAAddrBank
+    pla
+    //lda veraAddr + 1
+    sta VERAAddrLow
+}
+
+.macro backupVERAForIRQ()
+{
+    backupVeraAddrInfo()
+    eor #%00000001
+    sta VERACTRL
+    backupVeraAddrInfo()
+}
+
+.macro restoreVERAForIRQ()
+{
+    restoreVeraAddrInfo()
+    restoreVeraAddrInfo()
 }
 
 .macro setDCSel(dcSel)
