@@ -136,3 +136,100 @@ skip1:
     dec counter+1
     bpl loop
 }
+
+.macro setUpSpriteInVera(SpriteNumber, SpriteAddress, Mode, XPos, YPos, ZDepth, Height, Width, PalletOffset)
+{
+    lda #<(SpriteNumber<<3)
+	sta VERAAddrLow
+
+    lda #>(SpriteNumber<<3)
+    clc
+    adc #>(SPRITEREGBASE-$10000)
+	sta VERAAddrHigh
+
+	lda #%00010001
+	sta VERAAddrBank
+
+    // using DATA0
+    lda VERACTRL
+    and #%11111110
+    sta VERACTRL
+
+    lda #<(SpriteAddress>>5)
+    sta VERADATA0
+    lda #>(SpriteAddress>>5) | Mode
+    sta VERADATA0
+
+    lda #<XPos
+    sta VERADATA0
+    lda #>XPos
+    sta VERADATA0
+
+    lda #<YPos
+    sta VERADATA0
+    lda #>YPos
+    sta VERADATA0
+
+    lda #ZDepth
+    sta VERADATA0
+
+    lda #Height | Width | PalletOffset
+    sta VERADATA0
+
+}
+
+.macro moveSpriteInVera(SpriteNumber, XPosAddr, YPosAddr)
+{
+    lda #<(SpriteNumber<<3)+ SPRITE_POSITION_X_LO_OFFSET
+	sta VERAAddrLow
+
+    lda #>(SpriteNumber<<3)
+    clc
+    adc #>(SPRITEREGBASE-$10000)
+	sta VERAAddrHigh
+
+	lda #%00010001
+	sta VERAAddrBank
+
+    // using DATA0
+    lda VERACTRL
+    and #%11111110
+    sta VERACTRL
+
+    lda XPosAddr
+    sta VERADATA0
+    lda XPosAddr+1
+    sta VERADATA0
+
+    lda YPosAddr
+    sta VERADATA0
+    lda YPosAddr + 1
+    sta VERADATA0
+
+}
+
+.macro setSpriteAddressInVera(SpriteNumber, SpriteAddress, Mode)
+{
+    lda #<(SpriteNumber<<3)
+	sta VERAAddrLow
+
+    lda #>(SpriteNumber<<3)
+    clc
+    adc #>(SPRITEREGBASE-$10000)
+	sta VERAAddrHigh
+
+	lda #%00010001
+	sta VERAAddrBank
+
+    // using DATA0
+    lda VERACTRL
+    and #%11111110
+    sta VERACTRL
+
+    lda #<(SpriteAddress>>5)
+    sta VERADATA0
+    lda #>(SpriteAddress>>5) | Mode
+    sta VERADATA0
+
+}
+
