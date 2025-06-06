@@ -83,6 +83,6 @@ Frame:  .byte 0
 
 *=$3000
 SpriteData:
-.import binary "Coders\\Sorcerer\\invaders.SPR"
+.import binary "Coders/Sorcerer/invaders.SPR"
 _SpriteData:
 

@@ -2,6 +2,10 @@
 
 veraAddr: .byte 0,0,0,0
 
+.macro break(){
+    .byte $db
+}
+
 .macro addressRegister(control,address,increment,direction) {
 	
 	.if (control == 0){

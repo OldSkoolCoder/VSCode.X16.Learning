@@ -11,8 +11,8 @@
         "files.associations": {
             "*.asm": "kickassembler"
 		},
-		"kickassembler.emulator.runtime": "C:\\Users\\John\\Desktop\\CommanderX16\\R46\\x16emu.exe",
+		"kickassembler.emulator.runtime": "E:/MyEmulators/X16-R48/x16emu.exe",
         "kickassembler.assembler.option.outputDirectory": "Bin",
-        "kickassembler.emulator.options": "-prg ${kickassembler:buildFilename} -run -scale 2 -debug -keymap en-gb -joy1"
+        "kickassembler.emulator.options": "-prg ${kickassembler:buildFilename} -run -scale 2 -debug -keymap en-gb -joy1 -echo"
     }
 }
