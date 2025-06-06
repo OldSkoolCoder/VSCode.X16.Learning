@@ -15,9 +15,9 @@
 .const SCREENHI_OFFSET = $B0
 
 //kernel routine to get keyboard character and Print character
-.label CHRIN  = $FFE4
-.label CHROUT  = $FFD2
-.label SCREEN  = $FFED
+// .label CHRIN  = $FFE4
+// .label CHROUT  = $FFD2
+// .label SCREEN  = $FFED
 
 *=$0801
 //    .byte $0b,$08,$01,$00,$9e,$32,$30,$36,$31,$00,$00,$00
